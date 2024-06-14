@@ -7,6 +7,9 @@
   } else {
     todos=JSON.parse(localStorage.getItem('todos'))
   }
+  const savetodos = () => {
+    localStorage.setItem('todos',JSON.stringify(todos))
+  } 
   const renderTodo = (todo) => {
 //   <li>
 //       <label>
@@ -28,7 +31,7 @@
         }
 
       })
-       localStorage.setItem('todos',JSON.stringify(todos))
+      savetodos()
     })
     const span = document.createElement('span')
     span.textContent = todo.title;
@@ -45,7 +48,7 @@
       todos=todos.filter((item) => {
         return item.id!==todo.id
       })
- localStorage.setItem('todos',JSON.stringify(todos))
+ savetodos()
     })
     const li = document.createElement('li')
     li.appendChild(label);
@@ -70,10 +73,24 @@
     renderTodo(todo)
     todos.push(todo)
     console.table(todos)
-    localStorage.setItem('todos',JSON.stringify(todos))
+    savetodos()
    input.value = ''
     input.focus()
   })
+  document.querySelector('#purge').addEventListener('click', () => {
+    if (!confirm('sure?')) {
+        return
+      }
+    todos=todos.filter((todo) => {
+    return todo.isCompleted===false
+    })
+    savetodos();
+    document.querySelectorAll('#todos li').forEach((li) => {
+      li.remove()
+    })
+    renderTodos()
+})
+
   renderTodos();
 
 
