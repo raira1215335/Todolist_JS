@@ -33,6 +33,10 @@
         return
       }
       li.remove()
+      todos=todos.filter((item) => {
+        return item.id!==todo.id
+      })
+ localStorage.setItem('todos',JSON.stringify(todos))
     })
     const li = document.createElement('li')
     li.appendChild(label);
@@ -44,16 +48,19 @@
     todos.forEach((todo) => {
       renderTodo(todo)
     })
+    
   }
   document.querySelector('#add-form').addEventListener('submit', (e) => {
     e.preventDefault()
     const input=document.querySelector('#add-form input')
     const todo = {
+      id:Date.now(),
       title: input.value,
       isCompleted:false,
     }
     renderTodo(todo)
     todos.push(todo)
+    console.table(todos)
     localStorage.setItem('todos',JSON.stringify(todos))
    input.value = ''
     input.focus()
