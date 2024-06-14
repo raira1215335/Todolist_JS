@@ -1,12 +1,12 @@
 'use strict'
 
 {
-  const todos = [
-    { title: 'aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa', isCompleted: false },
-    { title: 'bbb', isCompleted: true},
-    { title: 'ccc', isCompleted: false },
-     { title: 'ddd', isCompleted: false }
-  ];
+  let todos;
+  if (localStorage.getItem('todos') === null) {
+    todos=[]
+  } else {
+    todos=JSON.parse(localStorage.getItem('todos'))
+  }
   const renderTodo = (todo) => {
 //   <li>
 //       <label>
@@ -53,8 +53,12 @@
       isCompleted:false,
     }
     renderTodo(todo)
+    todos.push(todo)
+    localStorage.setItem('todos',JSON.stringify(todos))
    input.value = ''
     input.focus()
   })
   renderTodos();
+
+
 }
