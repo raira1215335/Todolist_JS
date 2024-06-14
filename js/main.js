@@ -39,5 +39,13 @@
       renderTodo(todo)
     })
   }
+  document.querySelector('#add-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+    const todo = {
+      title: document.querySelector('#add-form input').value,
+      isCompleted:false,
+    }
+    renderTodo(todo)
+  })
   renderTodos();
 }
