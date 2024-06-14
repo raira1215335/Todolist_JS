@@ -33,6 +33,13 @@ li{
   align-items: flex-start;
 }
 
+li input{
+  margin-right: 8px;
+}
+li label{
+  margin-right: 8px;
+}
+
 li input:checked+span{
   color: #aaa;
   text-decoration: line-through;

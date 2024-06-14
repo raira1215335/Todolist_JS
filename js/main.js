@@ -2,9 +2,10 @@
 
 {
   const todos = [
-    { title: 'aaa', isCompleted: false },
-    { title: 'bbb', isCompleted: false },
-    { title: 'ccc', isCompleted: false }
+    { title: 'aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa aaa', isCompleted: false },
+    { title: 'bbb', isCompleted: true},
+    { title: 'ccc', isCompleted: false },
+     { title: 'ddd', isCompleted: false }
   ];
   const renderTodo = (todo) => {
 //   <li>
